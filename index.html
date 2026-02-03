@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gölgeler Konuşacak | 18 Şubat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #0a0a0f;
-            --accent-gold: #c9a227;
-            --muted-gold: #8b7355;
-            --shadow-purple: #1a1a2e;
-            --text-light: #e8e8e8;
-            --text-muted: #9a9a9a;
+            /* Turkcell Renkleri */
+            --turkcell-yellow: #ffc72c;
+            --turkcell-dark-blue: #00205b;
+            --turkcell-light-blue: #0066b3;
+            --dark-bg: #0a0f1a;
+            --card-bg: #0d1526;
+            --text-light: #ffffff;
+            --text-body: #e0e6ed;
+            --text-muted: #a8b5c7;
         }
 
         * {
@@ -24,10 +27,12 @@
 
         body {
             background: var(--dark-bg);
-            color: var(--text-light);
-            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-body);
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
+            font-size: 16px;
+            line-height: 1.8;
         }
 
         /* Animated background */
@@ -39,9 +44,10 @@
             height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(ellipse at 20% 80%, rgba(201, 162, 39, 0.03) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(26, 26, 46, 0.8) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(10, 10, 15, 1) 0%, var(--dark-bg) 100%);
+                radial-gradient(ellipse at 20% 80%, rgba(255, 199, 44, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 32, 91, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 102, 179, 0.1) 0%, transparent 70%),
+                linear-gradient(180deg, var(--dark-bg) 0%, #0d1526 50%, var(--dark-bg) 100%);
         }
 
         .particles {
@@ -56,19 +62,85 @@
 
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--accent-gold);
+            width: 3px;
+            height: 3px;
+            background: var(--turkcell-yellow);
             border-radius: 50%;
             opacity: 0;
-            animation: float 8s infinite ease-in-out;
+            animation: float 10s infinite ease-in-out;
         }
 
         @keyframes float {
             0%, 100% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
             100% { opacity: 0; transform: translateY(-100vh) scale(1); }
+        }
+
+        /* Countdown Section - Fixed at top */
+        .countdown-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--turkcell-dark-blue) 0%, #001845 100%);
+            border-bottom: 2px solid var(--turkcell-yellow);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--turkcell-yellow);
+            font-style: italic;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--turkcell-yellow);
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(255, 199, 44, 0.5);
+        }
+
+        .countdown-unit {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.3rem;
+        }
+
+        .countdown-separator {
+            font-size: 2rem;
+            color: var(--turkcell-yellow);
+            opacity: 0.5;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         /* Hero Section */
@@ -78,12 +150,12 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 2rem;
+            padding: 8rem 2rem 2rem;
         }
 
         .hero-content {
             text-align: center;
-            max-width: 900px;
+            max-width: 1000px;
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -109,11 +181,29 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(255, 199, 44, 0.15) 0%, rgba(0, 102, 179, 0.1) 40%, transparent 70%);
             border-radius: 50%;
             animation: pulse 4s infinite ease-in-out;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(255, 199, 44, 0.2);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         @keyframes pulse {
@@ -122,51 +212,68 @@
         }
 
         .logo-img {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             object-fit: contain;
             border-radius: 50%;
             box-shadow: 
-                0 0 60px rgba(201, 162, 39, 0.3),
-                0 0 100px rgba(201, 162, 39, 0.1);
+                0 0 80px rgba(255, 199, 44, 0.3),
+                0 0 120px rgba(0, 102, 179, 0.2),
+                inset 0 0 60px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 1;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 3px solid rgba(255, 199, 44, 0.3);
         }
 
         .logo-img:hover {
             transform: scale(1.05);
+            box-shadow: 
+                0 0 100px rgba(255, 199, 44, 0.5),
+                0 0 150px rgba(0, 102, 179, 0.3);
         }
 
         .main-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             font-weight: 600;
-            color: var(--accent-gold);
+            color: var(--text-light);
             margin-bottom: 1rem;
-            text-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
-            letter-spacing: 2px;
+            text-shadow: 0 0 40px rgba(255, 199, 44, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .main-title span {
+            color: var(--turkcell-yellow);
         }
 
         .subtitle {
-            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             font-style: italic;
-            color: var(--text-muted);
+            color: var(--turkcell-yellow);
             margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(255, 199, 44, 0.4);
         }
 
         .date-badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--muted-gold) 100%);
-            color: var(--dark-bg);
-            padding: 0.8rem 2.5rem;
+            background: linear-gradient(135deg, var(--turkcell-yellow) 0%, #e6b325 100%);
+            color: var(--turkcell-dark-blue);
+            padding: 1rem 3rem;
             border-radius: 50px;
             font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
             letter-spacing: 3px;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 30px rgba(201, 162, 39, 0.3);
+            box-shadow: 0 4px 40px rgba(255, 199, 44, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .date-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 50px rgba(255, 199, 44, 0.5);
         }
 
         .scroll-indicator {
@@ -178,10 +285,10 @@
         }
 
         .scroll-indicator svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--accent-gold);
-            opacity: 0.6;
+            width: 35px;
+            height: 35px;
+            fill: var(--turkcell-yellow);
+            opacity: 0.7;
         }
 
         @keyframes bounce {
@@ -196,15 +303,15 @@
         }
 
         .section-divider {
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--turkcell-yellow), transparent);
             margin: 0 auto 4rem;
         }
 
         .story-card {
-            background: linear-gradient(145deg, rgba(26, 26, 46, 0.6) 0%, rgba(10, 10, 15, 0.8) 100%);
-            border: 1px solid rgba(201, 162, 39, 0.1);
+            background: linear-gradient(145deg, rgba(13, 21, 38, 0.9) 0%, rgba(10, 15, 26, 0.95) 100%);
+            border: 1px solid rgba(255, 199, 44, 0.15);
             border-radius: 20px;
             padding: 3rem;
             margin-bottom: 2rem;
@@ -221,7 +328,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.05), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 199, 44, 0.05), transparent);
             transition: left 0.8s ease;
         }
 
@@ -230,74 +337,79 @@
         }
 
         .story-card:hover {
-            border-color: rgba(201, 162, 39, 0.3);
-            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 199, 44, 0.4);
+            box-shadow: 0 10px 60px rgba(0, 32, 91, 0.5), 0 0 30px rgba(255, 199, 44, 0.1);
             transform: translateY(-5px);
         }
 
         .story-text {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             line-height: 2;
-            color: var(--text-light);
+            color: var(--text-body);
+            font-weight: 400;
         }
 
         .story-text.lead {
-            font-size: 1.5rem;
-            color: var(--text-muted);
+            font-size: 1.4rem;
+            color: var(--text-light);
             font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
 
         .highlight {
-            color: var(--accent-gold);
+            color: var(--turkcell-yellow);
             font-weight: 600;
         }
 
         .quote-block {
-            border-left: 3px solid var(--accent-gold);
+            border-left: 4px solid var(--turkcell-yellow);
             padding-left: 2rem;
             margin: 2rem 0;
             font-style: italic;
-            font-size: 1.4rem;
-            color: var(--text-muted);
+            font-size: 1.35rem;
+            color: var(--text-light);
+            font-family: 'Playfair Display', serif;
         }
 
         /* Details Section */
         .details-section {
             padding: 5rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(26, 26, 46, 0.3) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 32, 91, 0.2) 50%, transparent 100%);
         }
 
         .detail-card {
-            background: rgba(26, 26, 46, 0.4);
-            border: 1px solid rgba(201, 162, 39, 0.15);
+            background: rgba(13, 21, 38, 0.8);
+            border: 1px solid rgba(255, 199, 44, 0.2);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
             height: 100%;
             transition: all 0.3s ease;
         }
 
         .detail-card:hover {
-            border-color: var(--accent-gold);
-            background: rgba(26, 26, 46, 0.6);
+            border-color: var(--turkcell-yellow);
+            background: rgba(0, 32, 91, 0.3);
+            box-shadow: 0 0 30px rgba(255, 199, 44, 0.15);
         }
 
         .detail-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
         .detail-label {
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            color: var(--accent-gold);
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: var(--turkcell-yellow);
+            letter-spacing: 3px;
+            margin-bottom: 0.8rem;
         }
 
         .detail-value {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-light);
+            font-weight: 500;
         }
 
         /* Warning Section */
@@ -308,67 +420,103 @@
 
         .warning-box {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(26, 26, 46, 0.5) 100%);
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 15px;
-            padding: 2rem 3rem;
-            max-width: 600px;
+            background: linear-gradient(135deg, rgba(255, 199, 44, 0.1) 0%, rgba(0, 32, 91, 0.4) 100%);
+            border: 2px solid rgba(255, 199, 44, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem 3.5rem;
+            max-width: 650px;
         }
 
         .warning-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
         .warning-text {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.2rem;
+            color: var(--text-body);
+            font-weight: 400;
         }
 
         .limit-badge {
             display: inline-block;
-            background: var(--accent-gold);
-            color: var(--dark-bg);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            margin-top: 1rem;
+            background: var(--turkcell-yellow);
+            color: var(--turkcell-dark-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 20px rgba(255, 199, 44, 0.3);
         }
 
         /* Footer */
         .footer-section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(201, 162, 39, 0.1);
+            border-top: 1px solid rgba(255, 199, 44, 0.15);
+            background: linear-gradient(180deg, transparent, rgba(0, 32, 91, 0.2));
         }
 
         .closing-message {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--turkcell-yellow);
             margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            text-shadow: 0 0 30px rgba(255, 199, 44, 0.4);
         }
 
         .closing-sub {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-muted);
             font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .countdown-section {
+                padding: 0.8rem 1rem;
+            }
+
+            .countdown-container {
+                gap: 1rem;
+            }
+
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+
+            .countdown-timer {
+                gap: 0.8rem;
+            }
+
+            .countdown-label {
+                font-size: 0.9rem;
+                display: none;
+            }
+
             .main-title {
                 font-size: 1.8rem;
             }
 
             .subtitle {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
 
             .logo-img {
-                width: 150px;
-                height: 150px;
+                width: 220px;
+                height: 220px;
+            }
+
+            .logo-container::before {
+                width: 300px;
+                height: 300px;
+            }
+
+            .logo-container::after {
+                width: 260px;
+                height: 260px;
             }
 
             .story-text {
@@ -380,27 +528,75 @@
             }
 
             .closing-message {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
+            }
+
+            .hero-section {
+                padding-top: 6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-separator {
+                display: none;
+            }
+
+            .countdown-value {
+                font-size: 1.3rem;
+            }
+
+            .countdown-unit {
+                font-size: 0.65rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <span class="countdown-label">Geri Sayım Başladı...</span>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-unit">Gün</div>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-unit">Saat</div>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-unit">Dakika</div>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-unit">Saniye</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Mystical Background -->
     <div class="mystical-bg"></div>
     <div class="particles">
-        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
-        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
-        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
-        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
-        <div class="particle" style="left: 90%; animation-delay: 0.5s;"></div>
-        <div class="particle" style="left: 15%; animation-delay: 2.5s;"></div>
-        <div class="particle" style="left: 45%; animation-delay: 3.5s;"></div>
-        <div class="particle" style="left: 75%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 15%; animation-delay: 1.2s;"></div>
+        <div class="particle" style="left: 25%; animation-delay: 2.4s;"></div>
+        <div class="particle" style="left: 35%; animation-delay: 3.6s;"></div>
+        <div class="particle" style="left: 45%; animation-delay: 4.8s;"></div>
+        <div class="particle" style="left: 55%; animation-delay: 0.6s;"></div>
+        <div class="particle" style="left: 65%; animation-delay: 1.8s;"></div>
+        <div class="particle" style="left: 75%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 85%; animation-delay: 4.2s;"></div>
+        <div class="particle" style="left: 95%; animation-delay: 5.4s;"></div>
+        <div class="particle" style="left: 10%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 3.5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 1s;"></div>
     </div>
 
     <!-- Hero Section -->
@@ -409,7 +605,7 @@
             <div class="logo-container">
                 <img src="kimbu.jpg" alt="Kimbu" class="logo-img">
             </div>
-            <h1 class="main-title">18 Şubat'ta Ofisin Işıkları Kısılıyor...</h1>
+            <h1 class="main-title"><span>18 Şubat'ta</span> Ofisin Işıkları Kısılıyor...</h1>
             <p class="subtitle">Gölgeler Konuşacak.</p>
             <div class="date-badge">18 ŞUBAT 2026</div>
         </div>
@@ -518,6 +714,36 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Countdown Timer - 18 Şubat 2026 23:59:59
+        const targetDate = new Date('2026-02-18T23:59:59').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
         // Smooth scroll for better UX
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
